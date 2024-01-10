@@ -3,7 +3,7 @@
 which nvm &>/dev/null && return
 
 # See https://github.com/nvm-sh/nvm#installation-and-update
-if [[ -z "$NVM_DIR" ]]; then
+if ! which nvm &>/dev/null && [[ -z "$NVM_DIR" ]]; then
   if [[ -d "$HOME/.nvm" ]]; then
     export NVM_DIR="$HOME/.nvm"
   elif [[ -d "${XDG_CONFIG_HOME:-$HOME/.config}/nvm" ]]; then
