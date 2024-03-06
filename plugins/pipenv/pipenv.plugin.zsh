@@ -12,7 +12,8 @@ fi
 
 _PIPENV_COMPLETE=zsh_source pipenv >| "$ZSH_CACHE_DIR/completions/_pipenv" &|
 
-if zstyle -T ':omz:plugins:pipenv' auto-shell; then
+# Use export PIPENV_SHELL=0 to disable auto shell in a way that works with direnv
+if zstyle -T ':omz:plugins:pipenv' auto-shell && [[ "$PIPENV_SHELL" != 0 ]]; then
   # Automatic pipenv shell activation/deactivation
   _togglePipenvShell() {
     # deactivate shell if Pipfile doesn't exist and not in a subdir
